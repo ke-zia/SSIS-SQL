@@ -25,22 +25,28 @@ class CollegeController:
         if original_code != new_code and College.exists(new_code):
             return f"A college with the code '{new_code}' already exists."
 
+        from models.program import Program
+
         # First update the code if it has changed
         if original_code != new_code:
-            College.delete(original_code)
-            College.add(new_code, new_name)
+            College.update_code_and_name(original_code, new_code, new_name)
         else:
             College.update(new_code, new_name)
             
         self.main_window.refreshCollegeTable()
+        self.main_window.refreshProgramTable()  # Also refresh programs
         return "College updated successfully."
 
     def delete_college(self, code: str) -> str:
         if not College.exists(code):
             return "College does not exist."
 
+        from models.program import Program
+        Program.nullify_college_code(code)  # <-- this method must exis
+
         College.delete(code)
         self.main_window.refreshCollegeTable()
+        self.main_window.refreshProgramTable()
         return "College deleted successfully."
 
     def get_all_colleges(self) -> list:

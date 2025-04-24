@@ -7,6 +7,7 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
+from PyQt6.QtGui import QFont
 
 
 class Ui_AddProgram_Window(object):
@@ -43,6 +44,12 @@ class Ui_AddProgram_Window(object):
 "    background-color: rgba(255, 255, 255, 0.6);\n"
 "    border-radius: 5px;\n"
 "}\n"
+"QComboBox QAbstractItemView {\n"
+"    background-color: black;\n"
+"    color: white;\n"
+"    selection-background-color: #555555;\n"
+"    selection-color: white;\n"
+"}\n"
 "#plabel{\n"
 "    color: #073b4c;\n"
 "}")
@@ -63,10 +70,11 @@ class Ui_AddProgram_Window(object):
         self.gridLayout_3.setObjectName("gridLayout_3")
         self.plabel = QtWidgets.QLabel(parent=self.frame_22)
         font = QtGui.QFont()
-        font.setFamily("Montserrat ExtraBold")
+        font.setFamily("Montserrat")
+        font.setWeight(QFont.Weight.Black)
         font.setPointSize(9)
-        font.setBold(True)
-        font.setWeight(75)
+        # font.setBold(True)
+        # font.setWeight(75)
         self.plabel.setFont(font)
         self.plabel.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.plabel.setObjectName("plabel")
@@ -81,56 +89,65 @@ class Ui_AddProgram_Window(object):
         self.verticalLayout.setObjectName("verticalLayout")
         self.prog_college = QtWidgets.QLabel(parent=self.frame_23)
         font = QtGui.QFont()
-        font.setFamily("Montserrat ExtraBold")
+        font.setFamily("Montserrat")
+        font.setWeight(QFont.Weight.Bold)
         self.prog_college.setFont(font)
         self.prog_college.setObjectName("prog_college")
         self.verticalLayout.addWidget(self.prog_college)
         self.pcollege_info = QtWidgets.QComboBox(parent=self.frame_23)
         font = QtGui.QFont()
-        font.setFamily("Montserrat SemiBold")
+        font.setFamily("Montserrat")
+        font.setWeight(QFont.Weight.DemiBold)
         self.pcollege_info.setFont(font)
         self.pcollege_info.setObjectName("pcollege_info")
         self.verticalLayout.addWidget(self.pcollege_info)
         self.prog_name = QtWidgets.QLabel(parent=self.frame_23)
         font = QtGui.QFont()
-        font.setFamily("Montserrat ExtraBold")
+        font.setFamily("Montserrat")
+        font.setWeight(QFont.Weight.Bold)
         self.prog_name.setFont(font)
         self.prog_name.setObjectName("prog_name")
         self.verticalLayout.addWidget(self.prog_name)
         self.pname_info = QtWidgets.QLineEdit(parent=self.frame_23)
         font = QtGui.QFont()
-        font.setFamily("Montserrat SemiBold")
+        font.setFamily("Montserrat")
+        font.setWeight(QFont.Weight.DemiBold)
         self.pname_info.setFont(font)
         self.pname_info.setObjectName("pname_info")
         self.verticalLayout.addWidget(self.pname_info)
         self.prog_code = QtWidgets.QLabel(parent=self.frame_23)
         font = QtGui.QFont()
-        font.setFamily("Montserrat ExtraBold")
+        font.setFamily("Montserrat")
+        font.setWeight(QFont.Weight.Bold)
         self.prog_code.setFont(font)
         self.prog_code.setObjectName("prog_code")
         self.verticalLayout.addWidget(self.prog_code)
         self.pcode_info = QtWidgets.QLineEdit(parent=self.frame_23)
         font = QtGui.QFont()
-        font.setFamily("Montserrat SemiBold")
+        font.setFamily("Montserrat")
+        font.setWeight(QFont.Weight.DemiBold)
         self.pcode_info.setFont(font)
         self.pcode_info.setObjectName("pcode_info")
         self.verticalLayout.addWidget(self.pcode_info)
         self.gridLayout_3.addWidget(self.frame_23, 1, 0, 1, 3)
         self.padd_btn = QtWidgets.QPushButton(parent=self.frame_22)
         font = QtGui.QFont()
-        font.setFamily("Montserrat SemiBold")
+        font.setFamily("Montserrat")
+        font.setWeight(QFont.Weight.DemiBold)
         self.padd_btn.setFont(font)
         self.padd_btn.setObjectName("padd_btn")
         self.gridLayout_3.addWidget(self.padd_btn, 2, 0, 1, 1)
         self.pclear_btn = QtWidgets.QPushButton(parent=self.frame_22)
         font = QtGui.QFont()
-        font.setFamily("Montserrat SemiBold")
+        font.setFamily("Montserrat")
+        font.setWeight(QFont.Weight.DemiBold)
         self.pclear_btn.setFont(font)
         self.pclear_btn.setObjectName("pclear_btn")
         self.gridLayout_3.addWidget(self.pclear_btn, 2, 1, 1, 1)
         self.pcancel_btn = QtWidgets.QPushButton(parent=self.frame_22)
         font = QtGui.QFont()
-        font.setFamily("Montserrat SemiBold")
+        font.setFamily("Montserrat")
+        font.setWeight(QFont.Weight.DemiBold)
         self.pcancel_btn.setFont(font)
         self.pcancel_btn.setObjectName("pcancel_btn")
         self.gridLayout_3.addWidget(self.pcancel_btn, 2, 2, 1, 1)

@@ -95,3 +95,14 @@ class College:
         cursor.close()
         conn.close()
         return results
+
+
+    @staticmethod
+    def update_code_and_name(old_code: str, new_code: str, new_name: str):
+        conn = getConnection()
+        cursor = conn.cursor()
+        cursor.execute("UPDATE colleges SET college_code = %s, college_name = %s WHERE college_code = %s",
+                    (new_code, new_name, old_code))
+        conn.commit()
+        cursor.close()
+        conn.close()
