@@ -48,7 +48,7 @@ def initialize_database():
                 first_name VARCHAR(255) NOT NULL,
                 last_name VARCHAR(255) NOT NULL,
                 year_level INT CHECK (year_level BETWEEN 1 AND 5) NOT NULL,
-                gender ENUM('Male', 'Female', 'Other') NOT NULL,
+                gender ENUM('Male', 'Female', 'Others') NOT NULL,
                 program_code VARCHAR(50),
                 FOREIGN KEY (program_code) REFERENCES programs(program_code) 
                     ON DELETE SET NULL 

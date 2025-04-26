@@ -42,7 +42,7 @@ class CollegeController:
             return "College does not exist."
 
         from models.program import Program
-        Program.nullify_college_code(code)  # <-- this method must exis
+        Program.nullify_college_code(code)
 
         College.delete(code)
         self.main_window.refreshCollegeTable()

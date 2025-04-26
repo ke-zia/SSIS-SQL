@@ -25,16 +25,21 @@ class ProgramController:
         if original_code != new_code and Program.exists(new_code):
             return f"A program with the code '{new_code}' already exists."
 
-        Program.update(new_code, new_name, college_code)
+        Program.update(original_code, new_code, new_name, college_code)
         self.main_window.refreshProgramTable()
+        self.main_window.refreshStudentTable()
         return "Program updated successfully."
 
     def delete_program(self, code: str) -> str:
         if not Program.exists(code):
             return "Program does not exist."
 
+        from models.student import Student
+        Student.nullify_program_code(code)
+
         Program.delete(code)
         self.main_window.refreshProgramTable()
+        self.main_window.refreshStudentTable()
         return "Program deleted successfully."
 
     def get_all_programs(self) -> list:

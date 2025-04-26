@@ -12,11 +12,17 @@ class Program:
         conn.close()
 
     @staticmethod
-    def update(program_code: str, program_name: str, college_code: str) -> None:
+    def update(old_program_code: str, new_program_code: str, program_name: str, college_code: str) -> None:
         conn = getConnection()
         cursor = conn.cursor()
-        sql = "UPDATE programs SET program_name = %s, college_code = %s WHERE program_code = %s"
-        cursor.execute(sql, (program_name, college_code, program_code))
+
+        sql_update_program = """
+            UPDATE programs
+            SET program_code = %s, program_name = %s, college_code = %s
+            WHERE program_code = %s
+        """
+        cursor.execute(sql_update_program, (new_program_code, program_name, college_code, old_program_code))
+
         conn.commit()
         cursor.close()
         conn.close()
@@ -25,8 +31,10 @@ class Program:
     def delete(program_code: str) -> None:
         conn = getConnection()
         cursor = conn.cursor()
-        sql = "DELETE FROM programs WHERE program_code = %s"
-        cursor.execute(sql, (program_code,))
+
+        sql_delete_program = "DELETE FROM programs WHERE program_code = %s"
+        cursor.execute(sql_delete_program, (program_code,))
+
         conn.commit()
         cursor.close()
         conn.close()
@@ -133,3 +141,16 @@ class Program:
         conn.commit()
         cursor.close()
         conn.close()
+
+    @staticmethod
+    def get_by_college(college_code: str) -> list:
+        conn = getConnection()
+        cursor = conn.cursor()
+        cursor.execute(
+            "SELECT program_code, program_name FROM programs WHERE college_code = %s", 
+            (college_code,)
+        )
+        programs = cursor.fetchall()
+        cursor.close()
+        conn.close()
+        return programs
