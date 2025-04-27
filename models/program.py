@@ -76,7 +76,7 @@ class Program:
         elif search_by == "College":
             sql = """SELECT p.program_code, p.program_name, p.college_code 
                      FROM programs p JOIN colleges c ON p.college_code = c.college_code 
-                     WHERE c.college_name LIKE %s"""
+                     WHERE c.college_code LIKE %s"""
             params = (keyword_like,)
         else:
             sql = """
